@@ -1,0 +1,921 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Productos y servicios | Kasvi</title>
+    <meta
+        name="description"
+        content="Explora plantas, decoración, sustratos, kits y servicios de ambientación de Kasvi."
+    >
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        .catalogo-page {
+            margin: 0;
+            background: #faf8f7;
+            color: #35412c;
+        }
+
+        .catalogo-page *,
+        .catalogo-page *::before,
+        .catalogo-page *::after {
+            box-sizing: border-box;
+        }
+
+        .catalogo-header {
+            max-width: 1280px;
+            width: 90%;
+            margin: 24px auto;
+            padding: 12px 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 16px #35412c18;
+        }
+
+        .catalogo-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            color: #35412c;
+            text-decoration: none;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 38px;
+            line-height: 1;
+        }
+
+        .catalogo-logo img {
+            width: 62px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .catalogo-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 22px;
+        }
+
+        .catalogo-nav a {
+            color: #3e5946;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .catalogo-nav a:hover,
+        .catalogo-nav a[aria-current="page"] {
+            color: #ad4768;
+        }
+
+        .catalogo-intro {
+            padding: 48px 24px;
+            background: #f2e5e9;
+            text-align: center;
+        }
+
+        .catalogo-eyebrow {
+            margin-bottom: 14px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+        }
+
+        .catalogo-intro h1 {
+            margin: 0 0 18px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(44px, 5.5vw, 72px);
+            font-weight: 400;
+            line-height: 1.05;
+        }
+
+        .catalogo-intro h1 em {
+            color: #ad4768;
+            font-style: normal;
+        }
+
+        .catalogo-intro > p:last-child {
+            max-width: 620px;
+            margin: auto;
+            color: #626b62;
+            font-size: 14px;
+        }
+
+        .catalogo-main {
+            max-width: 1240px;
+            margin: auto;
+            padding: 35px 24px 55px;
+        }
+
+        .catalogo-filtros {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .catalogo-filtros button {
+            padding: 11px 19px;
+            border: 1px solid #d8dfd2;
+            border-radius: 30px;
+            background: white;
+            color: #35412c;
+            font: inherit;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .catalogo-filtros button[aria-pressed="true"] {
+            background: #35412c;
+            color: white;
+            border-color: #35412c;
+        }
+
+        .catalogo-filtros button:hover {
+            border-color: #ad4768;
+        }
+
+        .catalogo-section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 22px;
+        }
+
+        .catalogo-section-head h2 {
+            margin: 0 0 8px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: clamp(32px, 4vw, 46px);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .catalogo-section-head p {
+            color: #626b62;
+            font-size: 13px;
+        }
+
+        .catalogo-controls {
+            display: flex;
+            flex-shrink: 0;
+            gap: 8px;
+        }
+
+        .catalogo-controls button {
+            width: 44px;
+            height: 44px;
+            border: 1px solid #d8dfd2;
+            border-radius: 50%;
+            background: white;
+            color: #35412c;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .catalogo-controls button:hover {
+            background: #f2e5e9;
+        }
+
+        .catalogo-controls button:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        .catalogo-track {
+            display: flex;
+            gap: 22px;
+            overflow-x: auto;
+            padding: 5px 3px 22px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: thin;
+            scrollbar-color: #b8c6ad #edf1e8;
+        }
+
+        .catalogo-item {
+            display: flex;
+            flex-direction: column;
+            flex: 0 0 calc((100% - 44px) / 3);
+            min-width: 0;
+            overflow: hidden;
+            scroll-snap-align: start;
+            border: 1px solid #e1e5dc;
+            border-radius: 22px;
+            background: white;
+        }
+
+        .catalogo-picture {
+            position: relative;
+            display: grid;
+            place-items: center;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 75% 25%, #ffffff99, transparent 55%),
+                #e7eee0;
+        }
+
+        .catalogo-item:nth-child(even) .catalogo-picture {
+            background:
+                radial-gradient(circle at 75% 25%, #ffffff99, transparent 55%),
+                #f0dde3;
+        }
+
+        .catalogo-placeholder {
+            display: grid;
+            justify-items: center;
+            gap: 10px;
+            padding: 20px;
+            color: #596c50;
+            text-align: center;
+        }
+
+        .catalogo-placeholder span {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 52px;
+            line-height: 1;
+        }
+
+        .catalogo-placeholder small {
+            font-size: 11px;
+            letter-spacing: 0.08em;
+        }
+
+        .catalogo-picture img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .catalogo-picture img[hidden],
+        .catalogo-placeholder[hidden] {
+            display: none;
+        }
+
+        .catalogo-item-body {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 22px;
+        }
+
+        .catalogo-tag {
+            margin-bottom: 8px;
+            color: #ad4768;
+            font-size: 10px;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .catalogo-item h3 {
+            margin-bottom: 9px;
+            font-size: 17px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .catalogo-description {
+            margin-bottom: 22px;
+            color: #626b62;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .catalogo-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .catalogo-price {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .catalogo-action {
+            display: inline-block;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 24px;
+            background: #35412c;
+            color: white;
+            font: inherit;
+            font-size: 11px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .catalogo-action:hover {
+            background: #263b29;
+        }
+
+        .catalogo-action:disabled {
+            background: #e7eee0;
+            color: #35412c;
+            cursor: default;
+        }
+
+        .catalogo-help {
+            margin-top: 35px;
+            padding: 28px;
+            border-radius: 22px;
+            background: #f2e5e9;
+            text-align: center;
+        }
+
+        .catalogo-help h2 {
+            margin: 0 0 10px;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 32px;
+            font-weight: 400;
+        }
+
+        .catalogo-help p {
+            margin-bottom: 18px;
+            color: #626b62;
+            font-size: 13px;
+        }
+
+        .catalogo-disclaimer {
+            margin-top: 25px;
+            color: #626b62;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .catalogo-status {
+            min-height: 24px;
+            margin-top: 12px;
+            color: #426147;
+            font-size: 12px;
+        }
+
+        @media (max-width: 950px) {
+            .catalogo-item {
+                flex-basis: calc((100% - 22px) / 2);
+            }
+        }
+
+        @media (max-width: 700px) {
+            .catalogo-header {
+                flex-direction: column;
+                gap: 14px;
+                border-radius: 24px;
+            }
+
+            .catalogo-nav {
+                justify-content: center;
+                gap: 12px 16px;
+            }
+
+            .catalogo-main {
+                padding: 28px 18px 40px;
+            }
+
+            .catalogo-section-head {
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .catalogo-controls {
+                gap: 5px;
+            }
+
+            .catalogo-controls button {
+                width: 36px;
+                height: 36px;
+            }
+
+            .catalogo-item {
+                flex-basis: 85%;
+            }
+        }
+    </style>
+</head>
+
+<body class="catalogo-page">
+    <header class="catalogo-header">
+        <a class="catalogo-logo" href="index.html" aria-label="Kasvi, inicio">
+            <img src="images/kasvi-logo.png" alt="" width="62" height="50">
+            <span>Kasvi</span>
+        </a>
+
+        <nav class="catalogo-nav" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Conócenos</a>
+            <a href="products.html" aria-current="page">Productos</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="cart.html">
+                Carrito <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="catalogo-intro" aria-labelledby="titulo-catalogo">
+            <p class="catalogo-eyebrow">PRODUCTOS Y SERVICIOS</p>
+            <h1 id="titulo-catalogo">
+                Todo para <em>tu rincón verde</em>
+            </h1>
+            <p>
+                Plantas, detalles y acompañamiento para dar vida
+                a tu hogar, oficina o negocio.
+            </p>
+        </section>
+
+        <div class="catalogo-main">
+            <div
+                class="catalogo-filtros"
+                role="group"
+                aria-label="Filtrar por categoría"
+            >
+                <button type="button" data-category="plantas" aria-pressed="true">
+                    Plantas
+                </button>
+                <button type="button" data-category="decoracion" aria-pressed="false">
+                    Macetas y decoración
+                </button>
+                <button type="button" data-category="insumos" aria-pressed="false">
+                    Sustratos y fertilizantes
+                </button>
+                <button type="button" data-category="kits" aria-pressed="false">
+                    Kits y regalos
+                </button>
+                <button type="button" data-category="servicios" aria-pressed="false">
+                    Ambientación y asesoría
+                </button>
+            </div>
+
+            <section aria-labelledby="categoria-titulo">
+                <div class="catalogo-section-head">
+                    <div>
+                        <h2 id="categoria-titulo">Plantas</h2>
+                        <p id="categoria-description"></p>
+                    </div>
+
+                    <div class="catalogo-controls">
+                        <button
+                            type="button"
+                            id="anterior"
+                            aria-label="Ver productos anteriores"
+                            aria-controls="catalogo-track"
+                        >←</button>
+
+                        <button
+                            type="button"
+                            id="siguiente"
+                            aria-label="Ver productos siguientes"
+                            aria-controls="catalogo-track"
+                        >→</button>
+                    </div>
+                </div>
+
+                <div
+                    id="catalogo-track"
+                    class="catalogo-track"
+                    role="region"
+                    aria-label="Carrusel de productos"
+                    tabindex="0"
+                ></div>
+
+                <p id="catalogo-status" class="catalogo-status" role="status"></p>
+            </section>
+
+            <section class="catalogo-help">
+                <h2>¿No sabes por dónde empezar?</h2>
+                <p>
+                    Cuéntanos cómo es tu espacio y qué necesitas.
+                    Podemos orientarte para elegir.
+                </p>
+                <a class="catalogo-action" href="contacto.html">
+                    Pedir asesoría
+                </a>
+            </section>
+
+            <p class="catalogo-disclaimer">
+               Catalogo
+            </p>
+        </div>
+    </main>
+
+    <!-- Usamos el mismo carrito, con controles propios para este catálogo. -->
+    <script src="js/store.js"></script>
+
+    <script>
+        /*
+         * IMÁGENES:
+         * Pega el enlace directo entre las comillas de imagen.
+         * Ejemplo: imagen: "https://sitio.com/foto.jpg"
+         *
+         * Todos los productos y precios son ejemplos editables.
+         */
+        const productosKasvi = [
+            {
+                id: "snake",
+                categoria: "plantas",
+                nombre: "Sansevieria",
+                etiqueta: "Interior",
+                descripcion: "Follaje vertical para complementar tu espacio.",
+                precio: 190,
+                imagen: "https://i.pinimg.com/1200x/a9/b4/7f/a9b47fa08dbb1c3a7cfcea7516c21221.jpg"
+            },
+            {
+                id: "calathea",
+                categoria: "plantas",
+                nombre: "Calathea",
+                etiqueta: "Interior",
+                descripcion: "Hojas decorativas para un rincón protagonista.",
+                precio: 260,
+                imagen: "https://i.pinimg.com/1200x/7e/38/ef/7e38ef4475a7cc6a889068599e53d706.jpg" 
+            },
+            {
+                id: "succulent",
+                categoria: "plantas",
+                nombre: "Suculenta surtida",
+                etiqueta: "Suculentas",
+                descripcion: "Una pieza pequeña para decorar o regalar.",
+                precio: 85,
+                imagen: "https://i.pinimg.com/1200x/f6/8c/4b/f68c4b824eb854d504e4822965c4cd42.jpg" 
+            },
+            {
+                id: "kasvi-lavanda",
+                categoria: "plantas",
+                nombre: "Lavanda",
+                etiqueta: "Aromáticas",
+                descripcion: "Una opción para integrar a tu proyecto de jardín.",
+                precio: 120,
+                imagen: "https://i.pinimg.com/736x/06/c4/49/06c449171d24045f29608e3858a1a238.jpg" 
+            },
+            {
+                id: "kasvi-maceta",
+                categoria: "decoracion",
+                nombre: "Maceta de cerámica",
+                etiqueta: "Macetas",
+                descripcion: "Presentación de ejemplo: una pieza de 15 cm, sin planta.",
+                precio: 160,
+                imagen: "https://i.pinimg.com/1200x/31/3d/c5/313dc53b34e0f2c49d8d55177c0c688e.jpg" 
+            },
+            {
+                id: "kasvi-base",
+                categoria: "decoracion",
+                nombre: "Base para maceta",
+                etiqueta: "Soportes",
+                descripcion: "Base decorativa de ejemplo. No incluye maceta ni planta.",
+                precio: 240,
+                imagen: "https://i.pinimg.com/1200x/18/a1/17/18a11740b03ce34786ff9398629ace80.jpg" 
+            },
+            {
+                id: "kasvi-colgante",
+                categoria: "decoracion",
+                nombre: "Portamaceta colgante",
+                etiqueta: "Decoración",
+                descripcion: "Soporte de ejemplo para maceta. Planta no incluida.",
+                precio: 180,
+                imagen: "https://i.pinimg.com/1200x/e8/96/3e/e8963ecc99fb8964d22294d8d7d4d0ed.jpg" 
+            },
+            {
+                id: "kasvi-sustrato",
+                categoria: "insumos",
+                nombre: "Sustrato para plantas",
+                etiqueta: "Sustratos",
+                descripcion: "Presentación de ejemplo: bolsa de 2 litros.",
+                precio: 65,
+                imagen: "https://i.pinimg.com/1200x/4c/2a/00/4c2a0044538aa13be9332f9ef103d876.jpg" 
+            },
+            {
+                id: "kasvi-abono",
+                categoria: "insumos",
+                nombre: "Abono orgánico",
+                etiqueta: "Abonos",
+                descripcion: "Presentación de ejemplo: bolsa de 1 kilogramo.",
+                precio: 75,
+                imagen: "https://i.pinimg.com/736x/a0/41/14/a04114c4baf8873ce96b34d2db8eee61.jpg" 
+            },
+            {
+                id: "kasvi-fertilizante",
+                categoria: "insumos",
+                nombre: "Fertilizante líquido",
+                etiqueta: "Fertilizantes",
+                descripcion: "Presentación de ejemplo: envase de 250 mililitros.",
+                precio: 110,
+                imagen: "https://i.pinimg.com/736x/f7/85/b0/f785b028e1f50db9f9f7b52097fc2c69.jpg" 
+            },
+            {
+                id: "kasvi-kit-inicio",
+                categoria: "kits",
+                nombre: "Mi primera planta",
+                etiqueta: "Kit",
+                descripcion: "Propuesta de kit: planta pequeña, maceta y guía de cuidado.",
+                precio: 250,
+                imagen: "https://i.pinimg.com/736x/46/3e/09/463e09dac72190b3116fd3454fccb8f9.jpg" 
+            },
+            {
+                id: "kasvi-regalo",
+                categoria: "kits",
+                nombre: "Un detalle con vida",
+                etiqueta: "Regalo",
+                descripcion: "Propuesta: suculenta, maceta y tarjeta para dedicar.",
+                precio: 180,
+                imagen: "https://i.pinimg.com/736x/6c/6a/9a/6c6a9af06baae3ae6f926fc786d51409.jpg" 
+            },
+            {
+                id: "kasvi-kit-jardin",
+                categoria: "kits",
+                nombre: "Rincón de jardinería",
+                etiqueta: "Kit",
+                descripcion: "Propuesta: maceta, sustrato y herramientas pequeñas.",
+                precio: 320,
+                imagen: "https://i.pinimg.com/736x/4f/3f/40/4f3f4035e3d725032e20ab64edf432b8.jpg" 
+            },
+            {
+                id: "kasvi-asesoria",
+                categoria: "servicios",
+                nombre: "Asesoría para tus plantas",
+                etiqueta: "Asesoría",
+                descripcion: "Cuéntanos tus dudas para definir el alcance de la orientación.",
+                precio: null,
+                imagen: "https://i.pinimg.com/1200x/06/e9/2a/06e92ada799c52823c2e338c6c8d5b98.jpg" 
+            },
+            {
+                id: "kasvi-residencial",
+                categoria: "servicios",
+                nombre: "Ambientación residencial",
+                etiqueta: "Hogares",
+                descripcion: "Propuesta de plantas y distribución según tu espacio y estilo.",
+                precio: null,
+                imagen: "https://i.pinimg.com/736x/0e/0d/1c/0e0d1c0b154224a2c10118a2097df32d.jpg" 
+            },
+            {
+                id: "kasvi-corporativo",
+                categoria: "servicios",
+                nombre: "Oficinas y negocios",
+                etiqueta: "Ambientación",
+                descripcion: "Consulta de diseño y mantenimiento de espacios con plantas.",
+                precio: null,
+                imagen: "https://i.pinimg.com/736x/af/d6/47/afd647be078b344cb2ac5c3c386fb684.jpg" 
+            }
+        ];
+
+        const categoriasKasvi = {
+            plantas: {
+                titulo: "Plantas para tu espacio",
+                descripcion: "Explora nuestras primeras opciones de plantas."
+            },
+            decoracion: {
+                titulo: "Detalles que acompañan",
+                descripcion: "Macetas y accesorios para completar tu rincón verde."
+            },
+            insumos: {
+                titulo: "Todo para seguir creciendo",
+                descripcion: "Sustratos, abonos y fertilizantes para tu selección."
+            },
+            kits: {
+                titulo: "Regala algo con vida",
+                descripcion: "Propuestas de kits para comenzar o sorprender."
+            },
+            servicios: {
+                titulo: "Tu idea, con acompañamiento",
+                descripcion: "Solicita una consulta para definir alcance y presupuesto."
+            }
+        };
+
+        const pista = document.getElementById("catalogo-track");
+        const estado = document.getElementById("catalogo-status");
+        const filtros = document.querySelectorAll("[data-category]");
+        const anterior = document.getElementById("anterior");
+        const siguiente = document.getElementById("siguiente");
+        const store = window.VQStore;
+        const actions = window.VQActions;
+
+        let categoriaActual = "plantas";
+
+        function actualizarCarrito() {
+            const carrito = store ? store.getState() : {};
+            const cantidad = Object.values(carrito).reduce(
+                (total, item) => total + item.quantity, 0
+            );
+
+            document.getElementById("cart-count").textContent = cantidad;
+
+            pista.querySelectorAll("button[data-producto]").forEach(boton => {
+                const agregado = Boolean(carrito[boton.dataset.producto]);
+                boton.disabled = !store || !actions || agregado;
+                boton.textContent = agregado
+                    ? "En tu carrito"
+                    : "Agregar";
+            });
+        }
+
+        function actualizarFlechas() {
+            anterior.disabled = pista.scrollLeft <= 2;
+            siguiente.disabled =
+                pista.scrollLeft + pista.clientWidth >= pista.scrollWidth - 2;
+        }
+
+        function crearTarjeta(producto) {
+            const tarjeta = document.createElement("article");
+            tarjeta.className = "catalogo-item";
+
+            const foto = document.createElement("div");
+            foto.className = "catalogo-picture";
+
+            const placeholder = document.createElement("div");
+            placeholder.className = "catalogo-placeholder";
+            placeholder.setAttribute("aria-hidden", "true");
+
+            const simbolo = document.createElement("span");
+            simbolo.textContent = "❧";
+
+            const pendiente = document.createElement("small");
+            pendiente.textContent = "IMAGEN PENDIENTE";
+
+            placeholder.append(simbolo, pendiente);
+            foto.append(placeholder);
+
+            if (producto.imagen.trim()) {
+                const imagen = document.createElement("img");
+                imagen.alt = producto.nombre;
+                imagen.loading = "eager";
+                imagen.hidden = true;
+
+                imagen.addEventListener("load", () => {
+                    imagen.hidden = false;
+                    placeholder.hidden = true;
+                });
+
+                imagen.addEventListener("error", () => {
+                    imagen.hidden = true;
+                    placeholder.hidden = false;
+                });
+
+                imagen.src = producto.imagen.trim();
+                foto.append(imagen);
+            }
+
+            const cuerpo = document.createElement("div");
+            cuerpo.className = "catalogo-item-body";
+
+            const etiqueta = document.createElement("p");
+            etiqueta.className = "catalogo-tag";
+            etiqueta.textContent = producto.etiqueta;
+
+            const nombre = document.createElement("h3");
+            nombre.textContent = producto.nombre;
+
+            const descripcion = document.createElement("p");
+            descripcion.className = "catalogo-description";
+            descripcion.textContent = producto.descripcion;
+
+            const inferior = document.createElement("div");
+            inferior.className = "catalogo-bottom";
+
+            const precio = document.createElement("span");
+            precio.className = "catalogo-price";
+
+            const esServicio = producto.categoria === "servicios";
+
+            precio.textContent = esServicio
+                ? "Según cotización"
+                : new Intl.NumberFormat("es-MX", {
+                    style: "currency",
+                    currency: "MXN",
+                    maximumFractionDigits: 0
+                }).format(producto.precio) + " MXN";
+
+            let accion;
+
+            if (esServicio) {
+                accion = document.createElement("a");
+                accion.href = "contacto.html";
+                accion.textContent = "Solicitar cotización";
+                accion.setAttribute(
+                    "aria-label",
+                    "Solicitar cotización: " + producto.nombre
+                );
+            } else {
+                accion = document.createElement("button");
+                accion.type = "button";
+                accion.dataset.producto = producto.id;
+                accion.textContent = "Agregar";
+                accion.setAttribute(
+                    "aria-label",
+                    "Agregar " + producto.nombre + " al carrito"
+                );
+
+                accion.addEventListener("click", () => {
+                    if (!store || !actions) return;
+
+                    store.dispatch({
+                        type: actions.ADD_ITEM,
+                        payload: {
+                            id: producto.id,
+                            name: producto.nombre,
+                            price: producto.precio,
+                            img: producto.imagen.trim() ||
+                                "images/kasvi-logo.png"
+                        }
+                    });
+
+                    estado.textContent =
+                        producto.nombre + " se agregó al carrito.";
+                });
+            }
+
+            accion.className = "catalogo-action";
+            inferior.append(precio, accion);
+            cuerpo.append(etiqueta, nombre, descripcion, inferior);
+            tarjeta.append(foto, cuerpo);
+
+            return tarjeta;
+        }
+
+        function mostrarCategoria(categoria, anunciar = false) {
+            categoriaActual = categoria;
+            const datos = categoriasKasvi[categoria];
+            const productos = productosKasvi.filter(
+                producto => producto.categoria === categoria
+            );
+
+            document.getElementById("categoria-titulo").textContent =
+                datos.titulo;
+
+            document.getElementById("categoria-description").textContent =
+                datos.descripcion;
+
+            filtros.forEach(boton => {
+                boton.setAttribute(
+                    "aria-pressed",
+                    String(boton.dataset.category === categoria)
+                );
+            });
+
+            pista.replaceChildren(...productos.map(crearTarjeta));
+            pista.scrollLeft = 0;
+            actualizarCarrito();
+
+            estado.textContent = anunciar
+                ? productos.length + " opciones en " + datos.titulo + "."
+                : "";
+
+            if (!store || !actions) {
+                estado.textContent =
+                    "El carrito no está disponible. Revisa que js/store.js esté guardado.";
+            }
+
+            requestAnimationFrame(actualizarFlechas);
+        }
+
+        filtros.forEach(boton => {
+            boton.addEventListener("click", () => {
+                mostrarCategoria(boton.dataset.category, true);
+            });
+        });
+
+        function desplazar(direccion) {
+            const tarjeta = pista.querySelector(".catalogo-item");
+            if (!tarjeta) return;
+
+            const paso = tarjeta.getBoundingClientRect().width + 22;
+
+            pista.scrollBy({
+                left: paso * direccion,
+                behavior: window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches ? "auto" : "smooth"
+            });
+        }
+
+        anterior.addEventListener("click", () => desplazar(-1));
+        siguiente.addEventListener("click", () => desplazar(1));
+        pista.addEventListener("scroll", actualizarFlechas, { passive: true });
+        window.addEventListener("resize", actualizarFlechas);
+
+        if (store) {
+            store.subscribe(actualizarCarrito);
+        }
+
+        mostrarCategoria(categoriaActual);
+    </script>
+</body>
+</html>

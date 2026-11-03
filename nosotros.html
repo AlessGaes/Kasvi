@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Conócenos | Kasvi</title>
+    <meta
+        name="description"
+        content="Conoce Kasvi: plantas, complementos y asesoría para crear espacios con vida en Morelos."
+    >
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        .nosotros-page {
+            margin: 0;
+            background: #faf8f7;
+            color: #35412c;
+        }
+
+        .nosotros-header {
+            width: 90%;
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 12px 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            border-radius: 50px;
+            background: white;
+            box-shadow: 0 4px 16px #35412c18;
+        }
+
+        .nosotros-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #35412c;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 38px;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nosotros-logo img {
+            width: 62px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .nosotros-nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .nosotros-nav a {
+            color: #3e5946;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .nosotros-nav a:hover,
+        .nosotros-nav a[aria-current="page"] {
+            color: #bd567d;
+        }
+
+        .nosotros-intro {
+            padding: 65px 24px;
+            background: #f2e5e9;
+            text-align: center;
+        }
+
+        .nosotros-eyebrow {
+            margin-bottom: 14px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+        }
+
+        .nosotros-page h1,
+        .nosotros-page h2 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 400;
+            line-height: 1.05;
+        }
+
+        .nosotros-page h1 {
+            margin-bottom: 20px;
+            font-size: clamp(44px, 6vw, 76px);
+        }
+
+        .nosotros-page h2 {
+            margin: 0 0 20px;
+            font-size: clamp(36px, 4vw, 52px);
+        }
+
+        .nosotros-page em {
+            color: #ad4768;
+            font-style: normal;
+        }
+
+        .nosotros-intro > p:last-child {
+            max-width: 600px;
+            margin: auto;
+            color: #626b62;
+            font-size: 15px;
+        }
+
+        .nosotros-content {
+            max-width: 1120px;
+            margin: auto;
+            padding: 70px 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .nosotros-copy p:not(.nosotros-eyebrow),
+        .nosotros-purpose p:not(.nosotros-eyebrow) {
+            color: #626b62;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .nosotros-copy p + p {
+            margin-top: 16px;
+        }
+
+        .nosotros-purpose {
+            padding: 36px;
+            border-radius: 55px 12px 55px 12px;
+            background: #e8eee2;
+        }
+
+        .nosotros-values {
+            padding: 45px max(24px, calc((100% - 1072px) / 2));
+            background: #35412c;
+            color: white;
+        }
+
+        .nosotros-values h2 {
+            margin-bottom: 32px;
+            font-size: 38px;
+        }
+
+        .nosotros-value-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 28px;
+        }
+
+        .nosotros-value-grid h3 {
+            margin-bottom: 10px;
+            color: #f0d2dd;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nosotros-value-grid p {
+            color: #e2e7dc;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .nosotros-close {
+            padding: 60px 24px;
+            text-align: center;
+        }
+
+        .nosotros-close p {
+            margin-bottom: 25px;
+            color: #626b62;
+            font-size: 14px;
+        }
+
+        .nosotros-close a {
+            display: inline-block;
+            padding: 13px 28px;
+            border-radius: 30px;
+            background: #35412c;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        .nosotros-close a:hover {
+            background: #263b29;
+        }
+
+        .nosotros-footer {
+            padding: 22px;
+            background: #f2e5e9;
+            text-align: center;
+            color: #626b62;
+            font-size: 11px;
+        }
+
+        @media (max-width: 700px) {
+            .nosotros-header {
+                flex-direction: column;
+                border-radius: 24px;
+                gap: 14px;
+            }
+
+            .nosotros-nav {
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .nosotros-content {
+                grid-template-columns: 1fr;
+                padding: 45px 24px;
+                gap: 30px;
+            }
+
+            .nosotros-value-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            .nosotros-value-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="nosotros-page">
+    <header class="nosotros-header">
+        <a class="nosotros-logo" href="index.html" aria-label="Kasvi, inicio">
+            <img src="images/kasvi-logo.png" alt="" width="62" height="50">
+            <span>Kasvi</span>
+        </a>
+
+        <nav class="nosotros-nav" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html" aria-current="page">Conócenos</a>
+            <a href="products.html">Productos</a>
+            <a href="cart.html">
+                Carrito <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="nosotros-intro" aria-labelledby="titulo-nosotros">
+            <p class="nosotros-eyebrow">CONOCE KASVI</p>
+
+            <h1 id="titulo-nosotros">
+                Más que plantas,<br>
+                <em>espacios con vida</em>
+            </h1>
+
+            <p>
+                Naturaleza, diseño y acompañamiento para transformar
+                los lugares que forman parte de tu historia.
+            </p>
+        </section>
+
+        <section class="nosotros-content" aria-label="Quiénes somos y propósito">
+            <div class="nosotros-copy">
+                <p class="nosotros-eyebrow">QUIÉNES SOMOS</p>
+
+                <h2>Acerca de <em>nosotros</em></h2>
+
+                <p>
+                    En Kasvi creemos en el poder de la naturaleza para
+                    transformar espacios y mejorar la vida de las personas.
+                    Somos una propuesta morelense dedicada a la venta de
+                    plantas y complementos, así como a la asesoría para
+                    integrar elementos naturales en hogares, oficinas
+                    y negocios.
+                </p>
+
+                <p>
+                    Nuestra propuesta reúne productos, orientación de cuidado
+                    y diseño de espacios. Queremos acompañarte desde la
+                    elección de tus plantas para que encuentres opciones
+                    acordes con tu entorno y tus necesidades.
+                </p>
+            </div>
+
+            <div class="nosotros-purpose">
+                <p class="nosotros-eyebrow">NUESTRO PROPÓSITO</p>
+
+                <h2>Naturaleza <em>que inspira</em></h2>
+
+                <p>
+                    Queremos ser una opción preferida en Morelos para
+                    quienes buscan integrar la naturaleza en sus espacios,
+                    ofreciendo productos y servicios que aporten bienestar,
+                    estética y un estilo de vida más sustentable.
+                </p>
+            </div>
+        </section>
+
+        <section class="nosotros-values" aria-labelledby="titulo-propuesta">
+            <h2 id="titulo-propuesta">Lo que queremos ofrecerte</h2>
+
+            <div class="nosotros-value-grid">
+                <article>
+                    <h3>Plantas de calidad</h3>
+                    <p>
+                        Selección cuidadosa para que encuentres una opción
+                        adecuada para tu espacio.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Asesoría personalizada</h3>
+                    <p>
+                        Orientación para elegir tus plantas y conocer
+                        sus necesidades de cuidado.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Espacios con vida</h3>
+                    <p>
+                        Diseño y ambientación natural para hogares,
+                        oficinas y negocios.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>Compromiso local</h3>
+                    <p>
+                        Una propuesta que busca impulsar el crecimiento
+                        de Morelos.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="nosotros-close">
+            <h2>Tu espacio también puede <em>florecer</em></h2>
+            <p>Encuentra tu siguiente detalle verde en nuestro catálogo.</p>
+            <a href="products.html">Explorar plantas</a>
+        </section>
+    </main>
+
+    <footer class="nosotros-footer">
+        Kasvi 
+    </footer>
+
+    <script src="js/store.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

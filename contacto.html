@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Contacto y asesoría | Kasvi</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        body.contacto-page {
+            margin: 0;
+            background: #faf8f7;
+            color: #35412c;
+        }
+
+        .contacto-header {
+            width: 90%;
+            max-width: 1280px;
+            margin: 24px auto;
+            padding: 12px 26px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            background: white;
+            border-radius: 50px;
+            box-shadow: 0 4px 16px #35412c18;
+        }
+
+        .contacto-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #35412c;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 38px;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .contacto-logo img {
+            width: 62px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .contacto-nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contacto-nav a {
+            color: #3e5946;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .contacto-nav a:hover,
+        .contacto-nav a[aria-current="page"] {
+            color: #ad4768;
+        }
+
+        .contacto-intro {
+            padding: 50px 24px;
+            background: #f2e5e9;
+            text-align: center;
+        }
+
+        .contacto-eyebrow {
+            margin-bottom: 14px;
+            font-size: 11px;
+            letter-spacing: 0.16em;
+        }
+
+        .contacto-page h1,
+        .contacto-page h2 {
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 400;
+            line-height: 1.05;
+        }
+
+        .contacto-page h1 {
+            margin: 0 0 20px;
+            font-size: clamp(44px, 6vw, 72px);
+        }
+
+        .contacto-page h2 {
+            margin: 0 0 18px;
+            font-size: 38px;
+        }
+
+        .contacto-page em {
+            color: #ad4768;
+            font-style: normal;
+        }
+
+        .contacto-intro > p:last-child {
+            max-width: 580px;
+            margin: auto;
+            color: #626b62;
+            font-size: 14px;
+        }
+
+        .contacto-layout {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            align-items: start;
+            gap: 45px;
+            max-width: 1060px;
+            margin: auto;
+            padding: 55px 24px;
+        }
+
+        .contacto-info {
+            padding: 30px;
+            border-radius: 40px 12px 40px 12px;
+            background: #e8eee2;
+        }
+
+        .contacto-info p {
+            margin-bottom: 18px;
+            color: #626b62;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .contacto-info a {
+            color: #35412c;
+        }
+
+        .contacto-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .contacto-field {
+            display: grid;
+            gap: 8px;
+        }
+
+        .contacto-field label {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .contacto-field input,
+        .contacto-field select,
+        .contacto-field textarea {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1px solid #ccd5c7;
+            border-radius: 12px;
+            background: white;
+            color: #35412c;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .contacto-field textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .contacto-field[hidden] {
+            display: none;
+        }
+
+        .contacto-note {
+            color: #626b62;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .contacto-submit {
+            justify-self: start;
+            padding: 14px 26px;
+            border: none;
+            border-radius: 30px;
+            background: #35412c;
+            color: white;
+            font: inherit;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .contacto-submit:hover {
+            background: #263b29;
+        }
+
+        .contacto-footer {
+            padding: 22px;
+            background: #f2e5e9;
+            color: #626b62;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        @media (max-width: 700px) {
+            .contacto-header {
+                flex-direction: column;
+                gap: 14px;
+                border-radius: 24px;
+            }
+
+            .contacto-nav {
+                justify-content: center;
+                gap: 12px 16px;
+            }
+
+            .contacto-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 35px 24px;
+            }
+        }
+    
+        /* Opiniones ilustrativas y zona de atención */
+        .kasvi-reviews { background:#f2e5e9; padding:55px 24px; }
+        .kasvi-reviews-inner, .kasvi-location { max-width:1012px; margin:auto; }
+        .kasvi-reviews-heading { display:flex; justify-content:space-between; align-items:center; gap:28px; margin-bottom:28px; }
+        .kasvi-rating { text-align:center; flex-shrink:0; }
+        .kasvi-rating strong { font-family:"Cormorant Garamond",Georgia,serif; font-size:64px; font-weight:500; line-height:1; }
+        .kasvi-stars { color:#94651d; letter-spacing:3px; font-size:21px; }
+        .kasvi-rating p, .kasvi-example-note { font-size:12px; color:#626b62; }
+        .kasvi-review-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+        .kasvi-review { margin:0; padding:26px; border-radius:22px; background:white; }
+        .kasvi-review blockquote { margin:16px 0; font-size:14px; line-height:1.8; color:#626b62; }
+        .kasvi-review figcaption { font-size:13px; font-weight:500; }
+        .kasvi-review small { display:block; margin-top:4px; color:#626b62; font-size:11px; }
+        .kasvi-example-note { margin-top:20px; line-height:1.8; }
+        .kasvi-location { padding:55px 24px; display:grid; grid-template-columns:1.2fr 0.8fr; gap:35px; align-items:center; }
+        .kasvi-location p { color:#626b62; font-size:14px; line-height:1.9; margin-bottom:20px; }
+        .kasvi-location a { display:inline-block; padding:13px 24px; border-radius:30px; color:white; background:#35412c; text-decoration:none; font-size:13px; }
+        .kasvi-location-card { padding:35px; background:#e8eee2; border-radius:45px 12px; text-align:center; }
+        .kasvi-location-card strong { display:block; font-family:"Cormorant Garamond",Georgia,serif; font-size:48px; font-weight:400; }
+        .kasvi-location-card span { font-size:12px; letter-spacing:0.12em; }
+        @media(max-width:700px) {
+            .kasvi-reviews-heading { flex-direction:column; align-items:flex-start; }
+            .kasvi-review-grid, .kasvi-location { grid-template-columns:1fr; }
+            .kasvi-rating { text-align:left; }
+        }
+    </style>
+</head>
+
+<body class="contacto-page">
+    <header class="contacto-header">
+        <a class="contacto-logo" href="index.html" aria-label="Kasvi, inicio">
+            <img src="images/kasvi-logo.png" alt="" width="62" height="50">
+            <span>Kasvi</span>
+        </a>
+
+        <nav class="contacto-nav" aria-label="Navegación principal">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Conócenos</a>
+            <a href="products.html">Productos</a>
+            <a href="contacto.html" aria-current="page">Contacto</a>
+            <a href="cart.html">
+                Carrito <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contacto-intro" aria-labelledby="titulo-contacto">
+            <p class="contacto-eyebrow">ESTAMOS AQUÍ PARA TI</p>
+
+            <h1 id="titulo-contacto">
+                Hagamos florecer <em>tu idea</em>
+            </h1>
+
+            <p>
+                Pregunta por una planta, solicita orientación
+                o cuéntanos cómo te gustaría transformar tu espacio.
+            </p>
+        </section>
+
+        <section class="contacto-layout" aria-label="Contacto y formulario">
+            <aside class="contacto-info">
+                <h2>Hablemos de <em>tu espacio</em></h2>
+
+                <p>
+                    No necesitas tener todo resuelto. Cuéntanos qué buscas
+                    y qué dudas tienes para iniciar la conversación.
+                </p>
+
+                <p>
+                    Si solicitas ambientación, puedes mencionar la luz
+                    disponible, las dimensiones aproximadas y el estilo
+                    que te gustaría lograr.
+                </p>
+
+                <p>
+                    También puedes escribirnos directamente:
+                    <br>
+                    <a
+                        href="https://wa.me/527341597113"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Abrir WhatsApp ↗
+                    </a>
+                </p>
+
+                <p>
+                    Las consultas de asesoría están sujetas a confirmación
+                    de disponibilidad, alcance y costo.
+                </p>
+            </aside>
+
+            <form id="consulta-form" class="contacto-form">
+                <div class="contacto-field">
+                    <label for="nombre">Nombre *</label>
+                    <input
+                        id="nombre"
+                        name="nombre"
+                        type="text"
+                        autocomplete="given-name"
+                        maxlength="80"
+                        required
+                    >
+                </div>
+
+                <div class="contacto-field">
+                    <label for="correo">Correo electrónico (opcional)</label>
+                    <input
+                        id="correo"
+                        name="correo"
+                        type="email"
+                        autocomplete="email"
+                        maxlength="120"
+                    >
+                </div>
+
+                <div class="contacto-field">
+                    <label for="motivo">¿En qué podemos ayudarte? *</label>
+                    <select id="motivo" name="motivo" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="producto">
+                            Duda sobre una planta o producto
+                        </option>
+                        <option value="cuidados">
+                            Asesoría para cuidar mis plantas
+                        </option>
+                        <option value="ambientacion">
+                            Consulta de ambientación
+                        </option>
+                    </select>
+                </div>
+
+                <div id="espacio-field" class="contacto-field" hidden>
+                    <label for="espacio">Tipo de espacio *</label>
+                    <select id="espacio" name="espacio" disabled>
+                        <option value="">Selecciona una opción</option>
+                        <option value="Hogar">Hogar</option>
+                        <option value="Oficina">Oficina</option>
+                        <option value="Negocio">Negocio</option>
+                    </select>
+                </div>
+
+                <div class="contacto-field">
+                    <label for="mensaje">Cuéntanos tu duda o proyecto *</label>
+                    <textarea
+                        id="mensaje"
+                        name="mensaje"
+                        maxlength="1500"
+                        placeholder="¿Qué te gustaría saber o qué espacio quieres transformar?"
+                        required
+                    ></textarea>
+                </div>
+
+                <p id="envio-nota" class="contacto-note">
+                    Al continuar se abrirá WhatsApp con los datos que
+                    escribiste. Podrás revisar el mensaje antes de enviarlo.
+                    Este formulario no guarda tu consulta en la página.
+                    El envío no confirma una cita ni una contratación.
+                </p>
+
+                <button
+                    type="submit"
+                    class="contacto-submit"
+                    aria-describedby="envio-nota"
+                >
+                    Continuar en WhatsApp ↗
+                </button>
+
+                <p id="consulta-status" class="contacto-note" role="status"></p>
+
+                <noscript>
+                    <p>
+                        Para usar el formulario activa JavaScript o utiliza
+                        el enlace directo a WhatsApp.
+                    </p>
+                </noscript>
+            </form>
+        </section>
+
+        <section class="kasvi-reviews" aria-labelledby="titulo-opiniones">
+            <div class="kasvi-reviews-inner">
+                <div class="kasvi-reviews-heading">
+                    <div>
+                        <p class="contacto-eyebrow">EXPERIENCIAS CON KASVI</p>
+                        <h2 id="titulo-opiniones">Lo que opinan <em>nuestros clientes</em></h2>
+                    
+                    </div>
+                    <div class="kasvi-rating" aria-label="Calificación ilustrativa: 4.9 de 5, más de 100 opiniones de ejemplo">
+                        <strong>4.9<span style="font-size:22px"> / 5</span></strong>
+                        <div class="kasvi-stars" aria-hidden="true">★★★★★</div>
+                        <p>100+ opiniones </p>
+                    </div>
+                </div>
+                <div class="kasvi-review-grid">
+                    <figure class="kasvi-review">
+                        <div class="kasvi-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+                        <blockquote>“Me orientaron para elegir una planta para mi sala y entender cómo cuidarla. La atención fue muy amable.”</blockquote>
+                        <figcaption>Regina A.<small>Opinión de clienta</small></figcaption>
+                    </figure>
+                    <figure class="kasvi-review">
+                        <div class="kasvi-stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+                        <blockquote>“Me gustó encontrar plantas y macetas en el mismo lugar. El conjunto quedó muy bonito en mi escritorio.”</blockquote>
+                        <figcaption>Xavier L.<small>Opinión ficticia de cliente</small></figcaption>
+                    </figure>
+                    <figure class="kasvi-review">
+                        <div class="kasvi-stars" role="img" aria-label="4 de 5 estrellas">★★★★☆</div>
+                        <blockquote>“La asesoría me ayudó a aterrizar ideas para mi negocio. Me gustaría ver más opciones de macetas.”</blockquote>
+                        <figcaption>Mariana S.<small>Opinión de clienta</small></figcaption>
+                    </figure>
+                </div>
+                <p class="kasvi-example-note">Calificaciones</p>
+            </div>
+        </section>
+
+        <section class="kasvi-location" aria-labelledby="titulo-ubicacion">
+            <div>
+                <p class="contacto-eyebrow">CERCA DE TI</p>
+                <h2 id="titulo-ubicacion">Estamos en <em>Morelos</em></h2>
+                <p>Escríbenos para conocer nuestras opciones de atención y entrega.</p>
+                <a href="https://wa.me/527341597113?text=Hola%2C%20Kasvi.%20Quisiera%20conocer%20sus%20opciones%20de%20atenci%C3%B3n%20y%20entrega%20en%20Morelos." target="_blank" rel="noopener noreferrer">Consultar atención y entrega ↗</a>
+            </div>
+            <div class="kasvi-location-card">
+                <strong>Morelos</strong>
+                <span>ATENCIÓN Y ENTREGA</span>
+            </div>
+        </section>
+    </main>
+
+    <footer class="contacto-footer">
+        Kasvi 
+    </footer>
+
+    <script src="js/store.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <script>
+        const form = document.getElementById("consulta-form");
+        const motivo = document.getElementById("motivo");
+        const espacioField = document.getElementById("espacio-field");
+        const espacio = document.getElementById("espacio");
+        const status = document.getElementById("consulta-status");
+
+        function actualizarEspacio() {
+            const esAmbientacion = motivo.value === "ambientacion";
+
+            espacioField.hidden = !esAmbientacion;
+            espacio.disabled = !esAmbientacion;
+            espacio.required = esAmbientacion;
+
+            if (!esAmbientacion) {
+                espacio.value = "";
+            }
+        }
+
+        motivo.addEventListener("change", actualizarEspacio);
+        actualizarEspacio();
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nombre = document.getElementById("nombre");
+            const mensaje = document.getElementById("mensaje");
+            const correo = document.getElementById("correo");
+
+            nombre.setCustomValidity(
+                nombre.value.trim() ? "" : "Escribe tu nombre."
+            );
+
+            mensaje.setCustomValidity(
+                mensaje.value.trim() ? "" : "Escribe tu consulta."
+            );
+
+            if (!form.reportValidity()) return;
+
+            const motivoTexto = motivo.options[motivo.selectedIndex].text.trim();
+
+            const lineas = [
+                "Hola, Kasvi. Quiero hacer una consulta.",
+                "",
+                "Nombre: " + nombre.value.trim(),
+                "Motivo: " + motivoTexto
+            ];
+
+            if (correo.value.trim()) {
+                lineas.push("Correo: " + correo.value.trim());
+            }
+
+            if (motivo.value === "ambientacion") {
+                lineas.push("Espacio: " + espacio.value);
+            }
+
+            lineas.push("", "Mensaje:", mensaje.value.trim());
+
+            const enlace =
+                "https://wa.me/527341597113?text=" +
+                encodeURIComponent(lineas.join("\n"));
+
+            window.open(enlace, "_blank", "noopener,noreferrer");
+
+            status.replaceChildren();
+
+            const aviso = document.createElement("span");
+            aviso.textContent =
+                "Si WhatsApp no se abrió, usa este enlace: ";
+
+            const alternativa = document.createElement("a");
+            alternativa.href = enlace;
+            alternativa.target = "_blank";
+            alternativa.rel = "noopener noreferrer";
+            alternativa.textContent = "Abrir mi consulta en WhatsApp";
+
+            status.append(aviso, alternativa);
+        });
+
+        ["nombre", "mensaje"].forEach(function (id) {
+            document.getElementById(id).addEventListener("input", function () {
+                this.setCustomValidity("");
+            });
+        });
+    </script>
+</body>
+</html>

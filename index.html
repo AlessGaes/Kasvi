@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Kasvi | Espacios con vida</title>
+
+    <meta
+        name="description"
+        content="Plantas y asesoría para dar vida a hogares, oficinas y negocios."
+    >
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* Logo separado del fondo */
+        .kasvi-home .kasvi-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+            width: auto;
+            height: auto;
+            color: #35412c;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-size: 38px;
+            font-weight: 500;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .kasvi-home .kasvi-logo img {
+            display: block;
+            width: 62px;
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .kasvi-home .kasvi-header {
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+
+        .kasvi-home .kasvi-nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        @media (max-width: 700px) {
+            .kasvi-home .kasvi-header {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .kasvi-home .kasvi-nav {
+                justify-content: center;
+                gap: 12px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body class="kasvi-home">
+
+    <header class="kasvi-header">
+        <a
+            class="kasvi-logo"
+            href="index.html"
+            aria-label="Kasvi, inicio"
+        >
+            <img
+                src="images/kasvi-logo.png"
+                alt=""
+                width="62"
+                height="50"
+            >
+            <span>Kasvi</span>
+        </a>
+
+        <nav class="kasvi-nav" aria-label="Navegación principal">
+            <a href="index.html" aria-current="page">
+                Inicio
+            </a>
+<a href="nosotros.html">Conócenos</a>
+            <a href="products.html">
+                Productos
+            </a>
+<a href="contacto.html">Contacto</a>
+            <a
+                class="kasvi-cart"
+                href="cart.html"
+                aria-label="Ver carrito"
+            >
+                Carrito
+                <span id="cart-count" class="cart-count">0</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="kasvi-hero" aria-labelledby="titulo-inicio">
+            <div class="kasvi-hero-text">
+                <h1 id="titulo-inicio">
+                    Llena de vida tus<br>
+                    rincones favoritos
+                </h1>
+
+                <p>
+                    Plantas y diseño para hogares y oficinas
+                </p>
+
+                <a class="kasvi-button" href="products.html">
+                    Explorar plantas
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/store.js"></script>
+    <script src="js/scripts.js"></script>
+
+</body>
+</html>
+
