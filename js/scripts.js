@@ -1,4 +1,4 @@
-// Cantidades y precios
+
 function getTotalItems(cart) {
     return Object.values(cart).reduce(
         (total, item) => total + item.quantity,
@@ -20,7 +20,7 @@ function formatMoney(amount) {
     }).format(amount) + " MXN";
 }
 
-// Contador del encabezado
+
 function updateCartCount() {
     const count = document.getElementById("cart-count");
 
@@ -31,7 +31,7 @@ function updateCartCount() {
     }
 }
 
-// Catálogo
+
 function initShopPage() {
     const buttons = document.querySelectorAll(".add-to-cart");
 
@@ -77,7 +77,7 @@ function initShopPage() {
     updateButtons();
 }
 
-// Carrito
+
 function renderCartPage() {
     const container = document.getElementById("cart-items");
     const totalItems = document.getElementById("total-items");
@@ -215,7 +215,7 @@ function renderCartPage() {
     refresh();
 }
 
-// Activar las funciones según los elementos de cada página
+
 document.addEventListener("DOMContentLoaded", () => {
     if (!window.VQStore || !window.VQActions) {
         console.error("No se pudo cargar el sistema del carrito.");

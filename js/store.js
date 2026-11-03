@@ -1,5 +1,4 @@
-// Almacenamiento del carrito de Kasvi.
-// Conservamos la clave anterior para mantener lo que ya esté guardado.
+
 const STORAGE_KEY = "kasvy_cart_v1";
 
 function loadState() {
